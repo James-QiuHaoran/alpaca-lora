@@ -25,6 +25,8 @@ Without hyperparameter tuning, the LoRA model produces outputs comparable to the
    ```
 
 1. If bitsandbytes doesn't work, [install it from source.](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md) Windows users can follow [these instructions](https://github.com/tloen/alpaca-lora/issues/17).
+- Installation: https://huggingface.co/docs/bitsandbytes/main/en/installation#compile-from-source
+- One needs Python 3.11
 
 ### Training (`finetune.py`)
 
@@ -36,7 +38,7 @@ Example usage:
 
 ```bash
 python finetune.py \
-    --base_model 'decapoda-research/llama-7b-hf' \
+    --base_model 'baffo32/decapoda-research-llama-7B-hf' \
     --data_path 'yahma/alpaca-cleaned' \
     --output_dir './lora-alpaca'
 ```
@@ -45,7 +47,7 @@ We can also tweak our hyperparameters:
 
 ```bash
 python finetune.py \
-    --base_model 'decapoda-research/llama-7b-hf' \
+    --base_model 'baffo32/decapoda-research-llama-7B-hf' \
     --data_path 'yahma/alpaca-cleaned' \
     --output_dir './lora-alpaca' \
     --batch_size 128 \
@@ -71,7 +73,7 @@ Example usage:
 ```bash
 python generate.py \
     --load_8bit \
-    --base_model 'decapoda-research/llama-7b-hf' \
+    --base_model 'baffo32/decapoda-research-llama-7B-hf' \
     --lora_weights 'tloen/alpaca-lora-7b'
 ```
 
@@ -81,7 +83,7 @@ The most recent "official" Alpaca-LoRA adapter available at [`tloen/alpaca-lora-
 
 ```bash
 python finetune.py \
-    --base_model='decapoda-research/llama-7b-hf' \
+    --base_model='baffo32/decapoda-research-llama-7B-hf' \
     --num_epochs=10 \
     --cutoff_len=512 \
     --group_by_length \
@@ -112,7 +114,7 @@ docker build -t alpaca-lora .
 ```bash
 docker run --gpus=all --shm-size 64g -p 7860:7860 -v ${HOME}/.cache:/root/.cache --rm alpaca-lora generate.py \
     --load_8bit \
-    --base_model 'decapoda-research/llama-7b-hf' \
+    --base_model 'baffo32/decapoda-research-llama-7B-hf' \
     --lora_weights 'tloen/alpaca-lora-7b'
 ```
 
