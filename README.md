@@ -64,6 +64,9 @@ python finetune.py \
     --group_by_length
 ```
 
+On H100 machines, there can be `cublasLt` related errors like `cuBLAS API failed with status 15`.
+This bug has not yet been fixed yet and more details are in: https://github.com/bitsandbytes-foundation/bitsandbytes/issues/538
+
 ### Inference (`generate.py`)
 
 This file reads the foundation model from the Hugging Face model hub and the LoRA weights from `tloen/alpaca-lora-7b`, and runs a Gradio interface for inference on a specified input. Users should treat this as example code for the use of the model, and modify it as needed.
