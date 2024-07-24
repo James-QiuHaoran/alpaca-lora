@@ -80,6 +80,9 @@ python generate.py \
     --lora_weights 'tloen/alpaca-lora-7b'
 ```
 
+- `peft==0.5.0` works and any version greater than that has trouble with unknown argument `enable_lora`
+- Also, an older version of `gradio` is needed: `pip install gradio==3.50`
+
 ### Official weights
 
 The most recent "official" Alpaca-LoRA adapter available at [`tloen/alpaca-lora-7b`](https://huggingface.co/tloen/alpaca-lora-7b) was trained on March 26 with the following command:
