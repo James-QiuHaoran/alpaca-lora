@@ -191,11 +191,13 @@ def train(
     if resume_from_checkpoint:
         # Check the available weights and load them
         checkpoint_name = os.path.join(
-            resume_from_checkpoint, "pytorch_model.bin"
+            # resume_from_checkpoint, "pytorch_model.bin"
+            resume_from_checkpoint, "pytorch_model.safetensors"
         )  # Full checkpoint
         if not os.path.exists(checkpoint_name):
             checkpoint_name = os.path.join(
-                resume_from_checkpoint, "adapter_model.bin"
+                # resume_from_checkpoint, "adapter_model.bin"
+                resume_from_checkpoint, "adaptor_model.safetensors"
             )  # only LoRA model - LoRA config above has to fit
             resume_from_checkpoint = (
                 False  # So the trainer won't try loading its state
